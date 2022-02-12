@@ -14,4 +14,3 @@ for a selected city.
 <li>Add app shortcut to the home screen</li>
 <li>View a chart showing the number of upcoming events by date</li>
 </ul>
-
