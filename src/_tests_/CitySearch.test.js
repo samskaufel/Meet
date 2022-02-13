@@ -10,7 +10,7 @@ describe('<CitySearch /> component', () => {
     locations = extractLocations(mockData);
     CitySearchWrapper = shallow(<CitySearch locations={locations} />);
   });
-  test('render text input', () => {
+  test('render textbox for text input', () => {
     expect(CitySearchWrapper.find('.city')).toHaveLength(1);
   });
   test('renders a list of suggestions', () => {

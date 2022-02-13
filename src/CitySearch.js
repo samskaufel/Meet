@@ -27,6 +27,7 @@ class CitySearch extends Component {
   render() {
     return (
       <div className='CitySearch'>
+        <p><b>Choose your nearest city</b></p>
         <input
           type='text'
           className='city'
