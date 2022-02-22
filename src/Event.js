@@ -19,9 +19,9 @@ class Event extends Component {
     return (
       <div className="event">
         <h2 className="summary">{event.summary}</h2>
-        <h3 className="start">{event.start}</h3>
-        <h3 className="end">{event.end}</h3>
-        <h4 className="location">{event.location}</h4>
+        <p className="start">{event.start}</p>
+        <p className="end">{event.end}</p>
+        <p className="location">{event.location}</p>
 
         <Button
           variant="outline-info"

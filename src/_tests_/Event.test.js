@@ -8,6 +8,9 @@ describe("<Event /> component", () => {
   beforeAll(() => {
     EventWrapper = shallow(<Event event={mockData[1]} />);
   });
+  test('render an event', () => {
+    expect(EventWrapper.find('.event')).toHaveLength(1);
+  });
   test("render event summary", () => {
     expect(EventWrapper.find(".summary")).toHaveLength(1);
   });
