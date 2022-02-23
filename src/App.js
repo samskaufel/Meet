@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
+import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <NumberOfEvents />
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
       </div>

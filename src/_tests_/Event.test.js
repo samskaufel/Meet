@@ -17,6 +17,9 @@ describe("<Event /> component", () => {
   test("render start of event", () => {
     expect(EventWrapper.find(".start")).toHaveLength(1);
   });
+  test('render event timezone', () => {
+    expect(EventWrapper.find('.timezone')).toHaveLength(1);
+  })
   test("render end of event", () => {
     expect(EventWrapper.find(".end")).toHaveLength(1);
   });

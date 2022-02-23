@@ -21,6 +21,7 @@ class Event extends Component {
         <h2 className="summary">{event.summary}</h2>
         <p className="start">{event.start.dateTime}</p>
         <p className="end">{event.end.dateTime}</p>
+        <p className="timezone">{event.start.timeZone}</p>
         <p className="location">{event.location}</p>
 
         <Button
