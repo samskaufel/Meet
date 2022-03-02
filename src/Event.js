@@ -24,18 +24,8 @@ class Event extends Component {
         <p className="timezone">{event.start.timeZone}</p>
         <p className="location">{event.location}</p>
 
-        <Button
-          variant="outline-info"
-          className={`${collapsed ? "show" : "hide"}-details`}
-          onClick={this.handleClick}
-        >
-          {collapsed ? "Show Details" : "Hide Details"}
-        </Button>
-
         {!collapsed && (
-          <div
-            className={`show-details ${this.state.collapsed ? "hide" : "show"}`}
-          >
+          <div className='event-details'>
             <h3>Details:</h3>
             <a
               className='htmlLink'
@@ -48,6 +38,14 @@ class Event extends Component {
             <p className='description'>{event.description}</p>
           </div>
         )}
+        <Button
+          id='details-btn'
+          variant="outline-info"
+          className={`${collapsed ? "show" : "hide"}-details`}
+          onClick={this.handleClick}
+        >
+          {collapsed ? "Show Details" : "Hide Details"}
+        </Button>
       </div>
     );
   }
