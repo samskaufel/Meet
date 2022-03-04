@@ -27,7 +27,7 @@ describe("<Event /> component", () => {
     expect(EventWrapper.find(".location")).toHaveLength(1);
   });
   test("render button to show event details", () => {
-    expect(EventWrapper.find(".show-details")).toHaveLength(1);
+    expect(EventWrapper.find(".details-button")).toHaveLength(1);
   });
   test("render event details collapsed by default", () => {
     expect(EventWrapper.state("collapsed")).toBe(true);
@@ -36,14 +36,14 @@ describe("<Event /> component", () => {
     EventWrapper.setState({
       collapsed: true,
     });
-    EventWrapper.find(".show-details").simulate("click");
+    EventWrapper.find(".details-button").simulate("click");
     expect(EventWrapper.state("collapsed")).toBe(false);
   });
   test("render collapsed details when hide details button is click", () => {
     EventWrapper.setState({
       collapsed: false,
     });
-    EventWrapper.find(".hide-details").simulate("click");
+    EventWrapper.find(".details-button").simulate("click");
     expect(EventWrapper.state("collapsed")).toBe(true);
   });
   test("render event description when details are shown", () => {

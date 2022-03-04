@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
 
 class Event extends Component {
   state = {
     collapsed: true,
+    eventDetailsButton: 'Show Details',
   };
 
-  handleClick = () => {
+  eventDetails = () => {
     this.setState({
       collapsed: !this.state.collapsed,
+      eventDetailsButton: this.state.collapsed ? 'Hide details' : 'Show details',
     });
   };
 
   render() {
     const { event } = this.props;
-    const { collapsed } = this.state;
 
     return (
       <div className="event">
@@ -24,7 +24,7 @@ class Event extends Component {
         <p className="timezone">{event.start.timeZone}</p>
         <p className="location">{event.location}</p>
 
-        {!collapsed && (
+        {!this.state.collapsed && (
           <div className='event-details'>
             <h3>Details:</h3>
             <a
@@ -38,14 +38,12 @@ class Event extends Component {
             <p className='description'>{event.description}</p>
           </div>
         )}
-        <Button
-          id='details-btn'
-          variant="outline-info"
-          className={`${collapsed ? "show" : "hide"}-details`}
-          onClick={this.handleClick}
+        <button
+          className='details-button'
+          onClick={() => this.eventDetails()}
         >
-          {collapsed ? "Show Details" : "Hide Details"}
-        </Button>
+          {this.state.eventDetailsButton}
+        </button>
       </div>
     );
   }
