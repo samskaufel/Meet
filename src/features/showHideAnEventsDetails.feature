@@ -1,12 +1,12 @@
 Feature: Show/Hide an Event's Details
 
 Scenario: An event element is collapsed by default
-Given the user has received a list of upcoming events in a city
+Given the user is on the main page
 When the list of events is showing
 Then the event details is collapsed by default
 
 Scenario: User can expand an event to see its details
-Given the user hasn’t clicked on show-details
+Given the user is on the main page and the event list has loaded
 When the user clicks on show-details
 Then the event element will expand to show the event details
 

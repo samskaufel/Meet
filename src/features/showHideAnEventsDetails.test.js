@@ -1,11 +1,13 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
 
+
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
 defineFeature(feature, test => {
+
   test('An event element is collapsed by default', ({ given, when, then }) => {
-    given('the user has received a list of upcoming events in a city', () => {
-    
+    given('the user is on the main page', () => {
+
     });
 
     when('the list of events is showing', () => {
@@ -18,7 +20,7 @@ defineFeature(feature, test => {
   });
 
   test('User can expand an event to see its details', ({ given, when, then }) => {
-    given('the user hasn’t clicked on show-details', () => {
+    given('the user is on the main page and the event list has loaded', () => {
 
     });
 
@@ -45,4 +47,5 @@ defineFeature(feature, test => {
     });
   });
 
-})
+
+});
