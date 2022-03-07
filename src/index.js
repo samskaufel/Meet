@@ -4,12 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import * as atatus from 'atatus-spa';
-// import * as serviceWorker from './service-worker';
 
 atatus.config('d3775e39f9664de9b73b2e275766a942').install();
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
 serviceWorkerRegistration.register();
-// serviceWorker.register();
 
