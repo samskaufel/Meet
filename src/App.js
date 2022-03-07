@@ -5,6 +5,9 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import './nprogress.css';
+import {
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+} from 'recharts';
 
 class App extends Component {
   state = {
@@ -50,9 +53,33 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NumberOfEvents updateEvents={this.updateEvents} />
+      <h1>Meet</h1>
+      <h4>Choose your nearest city</h4>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <EventList events={this.state.events} />
+      <h4>Number of events</h4>      
+        <NumberOfEvents updateEvents={this.updateEvents} /> 
+      <h4>Events in each city</h4>
+      
+      <ResponsiveContainer height={400} >
+      <ScatterChart
+          margin={{
+            top: 20, right: 20, bottom: 20, left: 20,
+          }}
+        >
+          <CartesianGrid />
+          <XAxis type="category" dataKey="city" name="city" />
+          <YAxis type="number" dataKey="number" name="number of events" />
+            <YAxis
+              allowDecimals={false}
+              type="number"
+              dataKey="number"
+              name="number of events"
+            />
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Scatter data={this.getData()} fill="#8884d8" />
+        </ScatterChart>
+      </ResponsiveContainer>
+      <EventList events={this.state.events} />
       </div>
     );
   }
