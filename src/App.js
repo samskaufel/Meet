@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import './nprogress.css';
+import EventGenre from './EventGenre';
 import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
@@ -58,8 +59,9 @@ class App extends Component {
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
       <h4>Number of events</h4>      
         <NumberOfEvents updateEvents={this.updateEvents} /> 
+      <div className='data-vis-wrapper'>
+        <EventGenre events={events} />
       <h4>Events in each city</h4>
-      
       <ResponsiveContainer height={400} >
       <ScatterChart
           margin={{
@@ -79,6 +81,7 @@ class App extends Component {
           <Scatter data={this.getData()} fill="#8884d8" />
         </ScatterChart>
       </ResponsiveContainer>
+      </div>
       <EventList events={this.state.events} />
       </div>
     );
