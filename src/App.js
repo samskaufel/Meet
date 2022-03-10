@@ -13,8 +13,9 @@ import {
 class App extends Component {
   state = {
     events: [],
-    locations: []
-  }
+    locations: [],
+    numberOfEvents: 32,
+  };
 
   componentDidMount() {
     this.mounted = true;
@@ -47,8 +48,8 @@ class App extends Component {
       const number = events.filter((event) => event.location === location).length
       const city = location.split(', ').shift()
       return {city, number};
-    })
-    retunr data;
+    });
+    return data;
   };
   
   render() {
@@ -58,9 +59,9 @@ class App extends Component {
       <h4>Choose your nearest city</h4>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
       <h4>Number of events</h4>      
-        <NumberOfEvents updateEvents={this.updateEvents} /> 
+        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} /> 
       <div className='data-vis-wrapper'>
-        <EventGenre events={events} />
+        <EventGenre events={this.state.events} />
       <h4>Events in each city</h4>
       <ResponsiveContainer height={400} >
       <ScatterChart
@@ -71,12 +72,6 @@ class App extends Component {
           <CartesianGrid />
           <XAxis type="category" dataKey="city" name="city" />
           <YAxis type="number" dataKey="number" name="number of events" />
-            <YAxis
-              allowDecimals={false}
-              type="number"
-              dataKey="number"
-              name="number of events"
-            />
           <Tooltip cursor={{ strokeDasharray: '3 3' }} />
           <Scatter data={this.getData()} fill="#8884d8" />
         </ScatterChart>
