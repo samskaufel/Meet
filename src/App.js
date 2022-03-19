@@ -59,7 +59,7 @@ class App extends Component {
       <h4>Choose your nearest city</h4>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
       <h4>Number of events</h4>      
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} /> 
+        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} /> 
       <div className='data-vis-wrapper'>
         <EventGenre events={this.state.events} />
       <h4>Events in each city</h4>
