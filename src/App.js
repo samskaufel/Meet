@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 32,
+    lastLocation: 'all',
+    lastNumberOfEvents: 32
   };
 
   componentDidMount() {
@@ -31,16 +32,24 @@ class App extends Component {
     this.mounted = false;
   }
 
-  updateEvents = (location) => {
+  updateEvents = ({location=this.state.lastLocation, numberOfEvents=this.state.lastNumberOfEvents}) => {
+    this.setState(
+      {lastLocation: location,
+      lastNumberOfEvents: numberOfEvents}
+    )
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
       events :
       events.filter((event) => event.location === location);
+      console.log(locationEvents)
       this.setState({
-        events: locationEvents
+        events: locationEvents.slice(0, numberOfEvents)
+
       });
     });
   }
+
+
   
   getData = () => {
     const {locations, events} = this.state;
@@ -59,7 +68,7 @@ class App extends Component {
       <h4>Choose your nearest city</h4>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
       <h4>Number of events</h4>      
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} /> 
+        <NumberOfEvents updateEvents={this.updateEvents} /> 
       <div className='data-vis-wrapper'>
         <EventGenre events={this.state.events} />
       <h4>Events in each city</h4>
