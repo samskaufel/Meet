@@ -2,6 +2,7 @@ import { mockData } from "./mock-data";
 import axios from "axios";
 import NProgress from "nprogress";
 
+
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
     var newurl =
